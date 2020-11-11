@@ -1,0 +1,32 @@
+//the first set of two lines but written like nicely
+selector="#page-content-wrapper > div.flex-fill > div > calling-screen > div > div.ts-calling-screen.flex-fill.call-connected.PERSISTENT.GRID.passive-bar-available.has-meeting-info.closed-captions-hidden.show-participants-in-passive-bar.show-roster.has-panel.shift-up > meeting-panel-components > calling-roster > div > div.scroll-container.flex-fill > div > div.scrolling-pane > accordion > div > accordion-section:nth-child(5) > div > calling-roster-section > div > div:nth-child(2) > div > ul";
+stopper=document.querySelector(selector);
+stopper.getElementsByTagName("li")[1];
+stopper.getElementsByClassName("participantInfo");
+stopper=stopper.getElementsByClassName("name");
+stopper=stopper[0];
+stopper=stopper.getElementsByClassName("ts-user-name")[0];
+firstabsentee=stopper.getAttribute("title");
+atendees = document.querySelectorAll(".ts-user-name");
+atendees.forEach(element => {
+    name=element.getAttribute("title");
+    if(name==firstabsentee){
+        process.abort();
+    }
+    else{
+        name = name.slice(0, -10);
+        console.log(name);
+    }
+});
+
+//should get all the people that were there because this selector is quite generic
+selector="#page-content-wrapper > div.flex-fill > div > calling-screen > div > div.ts-calling-screen.flex-fill.call-connected.PERSISTENT.GRID.passive-bar-available.has-meeting-info.closed-captions-hidden.show-participants-in-passive-bar.show-roster.has-panel.shift-up > meeting-panel-components > calling-roster > div > div.scroll-container.flex-fill > div > div.scrolling-pane > accordion > div > accordion-section:nth-child(5) > div > calling-roster-section > div > div:nth-child(2) > div > ul";
+stopper=document.querySelector(selector); stopper.getElementsByTagName("li")[1]; stopper.getElementsByClassName("participantInfo"); stopper=stopper.getElementsByClassName("name"); stopper=stopper[0]; stopper=stopper.getElementsByClassName("ts-user-name")[0]; firstabsentee=stopper.getAttribute("title"); atendees = document.querySelectorAll(".ts-user-name"); atendees.forEach(element => { name=element.getAttribute("title"); if(name==firstabsentee){ process.abort(); } else{ name = name.slice(0, -10); console.log(name); } });
+
+//WORSE
+//This just gets ALL the names, and you can delete everyone below the last person on the attendance who was actually there
+atendees = document.querySelectorAll(".ts-user-name");
+atendees.forEach(element => {
+    name=element.getAttribute("title");
+    console.log(name);
+});
