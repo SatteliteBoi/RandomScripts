@@ -1,0 +1,17 @@
+thing = document.querySelectorAll(".td-member");
+thing = Array.from(thing);
+arrayofemails = [];
+thing.forEach((element)=>{
+    element = element.querySelector(".td-member-name");
+    element = element.querySelector(".td-member-photo");
+    element = element.querySelector(".td-member-photo");
+    element = element.children[0];
+    element = element.children[0];
+    arrayofemails.push(element.getAttribute("upn"));
+});
+str = "";
+arrayofemails.forEach(element=>{
+    str+=element;
+    str+="\n";
+})
+console.log(str);
